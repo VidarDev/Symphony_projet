@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Accueil{% endblock %}
+
+{% block body %}
+<h1>{{post.title}}</h1>
+  <img class="card-img-top" src="{{ vich_uploader_asset(post, 'imageFile')}}" alt="{{post.title}}">
+<div>{{post.content|raw}}</div>
+
+<h2>Commentaires</h2>
+{% for comment in post.comments %}
+    <p>{{comment.commentBy.email}}</p>
+    <p>{{comment.content}}</p>
+    <hr/>
+{% endfor %}
+<h3>Ajouter un commentaire</h3>
+{{ form_start(form) }}
+{{ form_widget(form) }}
+<button class='btn btn-primary'> Commenter </button>
+{{ form_end(form) }}
+
+
+{% endblock %}

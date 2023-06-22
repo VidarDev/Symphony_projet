@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Accueil{% endblock %}
+
+{% block body %}
+<h1>Liste des articles</h1>
+<div class="row">
+    {% for post in posts %}
+    <div class="col-lg-6">
+    <div class="card">
+  <img class="card-img-top" src="{{ vich_uploader_asset(post, 'imageFile')}}" alt="{{post.title}}">
+  <div class="card-body">
+    <h5 class="card-title">{{ post.title }}</h5>
+    <a href="{{path('app_front_show',{id:post.id})}}" class="btn btn-primary">En savoir +</a>
+  </div>
+</div>
+</div>
+    {% endfor %}
+</div>
+{% endblock %}
